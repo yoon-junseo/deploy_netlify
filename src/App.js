@@ -1,32 +1,10 @@
-import ScrollBox from "./ScrollBox";
-import React, { useRef } from "react";
+import React from "react";
 
 const App = () => {
   const url =
     "data:image/png;base64,https://boated.s3.ap-northeast-2.amazonaws.com/2/2/logo.png/2";
 
   console.log(url);
-  const onClick = () => {
-    let link = document.createElement("a");
-    link.download = "제발";
-    link.href = url;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  async function downloadPDF() {
-    // blob 형태로 들고 있어야 함.
-    const res = await fetch(url);
-    const blob = await res.blob();
-    console.log("d");
-    // anchor tag를 통해 다운 받는 방법
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "something.pdf";
-    link.innerHTML = "download";
-    document.body.appendChild(link);
-  }
 
   const downloadFile = () => {
     const url = "https://boated.s3.ap-northeast-2.amazonaws.com/2/2/logo.png/2";
@@ -40,14 +18,6 @@ const App = () => {
 
   return (
     <>
-      <a href="#" download="pic.png">
-        <img
-          src="https://image.flaticon.com/icons/png/512/1598/1598431.png"
-          width="120px"
-          height="100px"
-          download="abc.png"
-        />
-      </a>
       <p>
         <a
           href="data:image/png;charset=utf-8,https://image.flaticon.com/icons/png/512/1598/1598431.png"
